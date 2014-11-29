@@ -11,10 +11,13 @@ function filter (emailCandidates) {
 
 
 function invalidMail (mailCandidate) {
-		if (mailCandidate.indexOf('@') === -1	||
-				mailCandidate.indexOf('.') === -1	||
-				mailCandidate.indexOf('.') < mailCandidate.indexOf('@'))
+
+	var atPosition = mailCandidate.indexOf('@'), dotPosition = mailCandidate.indexOf('.');
+	var mailHasNotAtSymbol = (dotPosition === -1), mailHasNotDotSymbol = (atPosition === -1);
+	var dotBeforeAt = (dotPosition < atPosition);
+
+	if (mailHasNotAtSymbol 	|| mailHasNotDotSymbol	|| dotBeforeAt)
 			return true;
 
-		return false;
+	return false;
 }
