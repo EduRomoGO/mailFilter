@@ -6,5 +6,5 @@ function filter (emailCandidates) {
 			emailCandidates[0].indexOf('.') < emailCandidates[0].indexOf('@'))
 		return [];
 
-
+	return emailCandidates;
 }
