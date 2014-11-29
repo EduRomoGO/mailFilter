@@ -1,10 +1,20 @@
 
 function filter (emailCandidates) {
-	if (emailCandidates.length === 0 						||
-			emailCandidates[0].indexOf('@') === -1	||
-			emailCandidates[0].indexOf('.') === -1	||
-			emailCandidates[0].indexOf('.') < emailCandidates[0].indexOf('@'))
-		return [];
+
+	var noCandidates = (emailCandidates.length === 0);
+
+	if (noCandidates || invalidMail(emailCandidates[0]))
+			return [];
 
 	return emailCandidates;
+}
+
+
+function invalidMail (mailCandidate) {
+		if (mailCandidate.indexOf('@') === -1	||
+				mailCandidate.indexOf('.') === -1	||
+				mailCandidate.indexOf('.') < mailCandidate.indexOf('@'))
+			return true;
+
+		return false;
 }
