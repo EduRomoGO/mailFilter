@@ -1,22 +1,22 @@
 
 function filter (emailCandidates) {
 
-	var numberOfCandidates = emailCandidates.length;
-	var noCandidates = ( numberOfCandidates === 0);
-	var mails = [], i;
+	var noCandidates = (emailCandidates.length === 0);
 
 	if (noCandidates)
 			return [];
 
-	for (i=0; i<numberOfCandidates; i++){
-		if (isMail(emailCandidates[i]))
-			mails.push(emailCandidates[i]);
-	}
-	
-	return mails;
-
+	return validMails(emailCandidates);
 }
 
+function validMails (emailCandidates) {
+	return emailCandidates.filter(checkIsMail);
+}
+
+function checkIsMail (candidate){
+	if (isMail(candidate))
+		return true;
+}
 
 function isMail (mailCandidate) {
 
