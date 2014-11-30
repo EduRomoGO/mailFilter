@@ -1,21 +1,6 @@
 
 function filter (emailCandidates) {
-
-	var noCandidates = (emailCandidates.length === 0);
-
-	if (noCandidates)
-			return [];
-
-	return validMails(emailCandidates);
-}
-
-function validMails (emailCandidates) {
-	return emailCandidates.filter(checkIsMail);
-}
-
-function checkIsMail (candidate){
-	if (isMail(candidate))
-		return true;
+	return (emailCandidates.length !== 0) ? emailCandidates.filter(isMail) : [];
 }
 
 function isMail (mailCandidate) {
@@ -25,7 +10,7 @@ function isMail (mailCandidate) {
 	var dotBeforeAt = (dotPosition < atPosition);
 
 	if (mailHasNotAtSymbol || mailHasNotDotSymbol || dotBeforeAt)
-			return false;
-
-	return true;
+		return false;
+	else
+		return true;
 }
