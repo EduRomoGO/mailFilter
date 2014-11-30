@@ -1,23 +1,31 @@
 
 function filter (emailCandidates) {
 
-	var noCandidates = (emailCandidates.length === 0);
+	var numberOfCandidates = emailCandidates.length;
+	var noCandidates = ( numberOfCandidates === 0);
+	var mails = [], i;
 
-	if (noCandidates || invalidMail(emailCandidates[0]))
+	if (noCandidates)
 			return [];
 
-	return emailCandidates;
+	for (i=0; i<numberOfCandidates; i++){
+		if (isMail(emailCandidates[i]))
+			mails.push(emailCandidates[i]);
+	}
+	
+	return mails;
+
 }
 
 
-function invalidMail (mailCandidate) {
+function isMail (mailCandidate) {
 
 	var atPosition = mailCandidate.indexOf('@'), dotPosition = mailCandidate.indexOf('.');
 	var mailHasNotAtSymbol = (dotPosition === -1), mailHasNotDotSymbol = (atPosition === -1);
 	var dotBeforeAt = (dotPosition < atPosition);
 
-	if (mailHasNotAtSymbol 	|| mailHasNotDotSymbol	|| dotBeforeAt)
-			return true;
+	if (mailHasNotAtSymbol || mailHasNotDotSymbol || dotBeforeAt)
+			return false;
 
-	return false;
+	return true;
 }

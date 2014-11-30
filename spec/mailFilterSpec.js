@@ -33,4 +33,8 @@ describe("The mail filter", function(){
       expect(filter(['a@.'])).toEqual(['a@.']);
   });
 
+  it("if receives one valid mail and other invalid, should return the valid mail", function(){
+      expect(filter(['a@.','b.'])).toEqual(['a@.']);
+  });
+
 });
